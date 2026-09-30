@@ -1,0 +1,35 @@
+{
+  "name": "ROS 2 Jazzy & Gazebo Harmonic (Ubuntu 24.04)",
+  "dockerFile": "Dockerfile",
+  "remoteUser": "ubuntu",
+  "runArgs": [
+    "--privileged",
+    "--network=host",
+    "--memory=8g",
+    "--memory-swap=12g"
+  ],
+  "workspaceMount": "source=${localWorkspaceFolder},target=/${localWorkspaceFolderBasename},type=bind",
+  "workspaceFolder": "/${localWorkspaceFolderBasename}",
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.bash_history,target=/home/ubuntu/.bash_history,type=bind",
+    "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind"
+  ],
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}",
+    "QT_X11_NO_MITSHM": "1",
+    "NVIDIA_DRIVER_CAPABILITIES": "all",
+    "ROS_DISTRO": "jazzy",
+    "GZ_VERSION": "harmonic"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-iot.vscode-ros",
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "redhat.vscode-xml",
+        "twxs.cmake"
+      ]
+    }
+  }
+}
